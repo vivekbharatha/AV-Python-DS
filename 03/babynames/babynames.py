@@ -44,10 +44,15 @@ def main():
 		del args[0]
 
 	for fName in args:
-		print(fName)
 		result = extract_names(fName)
 		result = "\n".join(result)
-		print(result)
+
+		if summary:
+			saveFile = open(fName + ".summary", "w")
+			saveFile.write(result)
+			saveFile.close()
+		else:
+			print(result)
 
 if __name__ == '__main__':
 	main()
